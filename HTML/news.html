@@ -1,94 +1,43 @@
-/news.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <title>Descent Nexus</title>
-    <link rel="shortcut icon" type="image/x-icon" href="cloak.ico">
-    <link href="../CSS/nav.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descent Nexus - News</title>
     <link href="../CSS/news.css" rel="stylesheet" type="text/css">
+    <link href="../CSS/nav.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="hero-image"></div>
     <div class="nav"></div>
-    <div class="outer-container">
-        <nav class="content-nav">
-            <a href="#news" class="content-nav-link active" onclick="switchTab('news')">News</a>
-            <a href="#versions" class="content-nav-link" onclick="switchTab('versions')">Versions</a>
-            <a href="#community" class="content-nav-link" onclick="switchTab('community')">Community</a>
-            <a href="#staff" class="content-nav-link" onclick="switchTab('staff')">Staff</a>
-        </nav>
-        
-        <!-- News Tab -->
-        <div id="news" class="tab-content active">
-            <h1 class="hero-title">Latest News</h1>
-            <hr>
+    <div class="content-container">
+        <div class="news-section">
+            <h1 class="section-header">Latest News</h1>
+
             <article class="news-item">
                 <h2>D3 Source Code Release!</h2>
-                <p class="date">4/15/24</p>
-                <div class="content">
-                    <p>Yup! That's right, Descent 3 source code has finally been released...</p>
-                    <div class="news-footer">
-                        <span class="author">Posted by Admin</span>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
+                <div class="news-meta">
+                    Posted on April 15, 2024 by Admin
                 </div>
+                <div class="news-content">
+                    Yup! That's right, Descent 3 source code has finally been released, the community is jumping to make changes, and working alongside the original maintainer of the code Kevin Bently...
+                </div>
+                <a href="#" class="read-more">Read More →</a>
+            </article>
+
+            <article class="news-item">
+                <h2>Community Update</h2>
+                <div class="news-meta">
+                    Posted on April 10, 2024 by Admin
+                </div>
+                <div class="news-content">
+                    Check out the latest community developments and upcoming events...
+                </div>
+                <a href="#" class="read-more">Read More →</a>
             </article>
         </div>
-
-        <!-- Versions Tab -->
-        <div id="versions" class="tab-content">
-            <h1 class="hero-title">Version History</h1>
-            <hr>
-            <div class="version-list">
-                <article class="version-item">
-                    <div class="version-header">
-                        <h2>Version 1.0.0</h2>
-                        <span class="version-date">2/22/24</span>
-                    </div>
-                    <ul class="changelog">
-                        <li>Initial release of Descent Nexus platform</li>
-                        <li>Added user authentication system</li>
-                        <li>Implemented basic navigation</li>
-                    </ul>
-                </article>
-            </div>
-        </div>
-
-        <!-- Community Tab -->
-        <div id="community" class="tab-content">
-            <h1 class="hero-title">Community Hub</h1>
-            <hr>
-            <div class="community-grid">
-                <div class="community-card">
-                    <h3>Discord</h3>
-                    <p>Join our active Discord community</p>
-                    <a href="#" class="community-link">Join Server</a>
-                </div>
-                <div class="community-card">
-                    <h3>Forums</h3>
-                    <p>Discuss strategies and share content</p>
-                    <a href="#" class="community-link">Visit Forums</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Staff Tab -->
-        <div id="staff" class="tab-content">
-            <h1 class="hero-title">Staff Directory</h1>
-            <hr>
-            <div class="staff-grid">
-                <div class="staff-card">
-                    <img src="../Assets/avatar-placeholder.png" alt="Staff Member">
-                    <h3>Admin Name</h3>
-                    <p class="staff-role">Administrator</p>
-                    <p class="staff-bio">Brief bio or description</p>
-                </div>
-            </div>
-        </div>
     </div>
+
     <script src="../Script/nav.js"></script>
-    <script src="../Script/tabs.js"></script>
 </body>
 </html>

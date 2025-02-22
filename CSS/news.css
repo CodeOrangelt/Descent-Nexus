@@ -1,22 +1,33 @@
+/* Base styles */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+    color: #ffffff;
+    background-color: transparent;
 }
 
+/* Background */
 .hero-image {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../Assets/1500x500.png");
     background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     z-index: -1;
-    background-repeat: no-repeat;
-    top: 0;
-    left: 0;
+}
+
+/* Main content container */
+.content-container {
+    margin-left: 250px; /* Space for nav bar */
+    padding: 30px;
+    max-width: 800px;
+    margin-top: 20px;
 }
 
 .outer-container {
@@ -92,17 +103,55 @@ html, body {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-.news-item {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-left: 4px solid #ffffff;
+/* News section styles */
+.news-section {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
     padding: 20px;
-    margin: 20px 0;
-    border-radius: 0 10px 10px 0;
-    transition: transform 0.3s ease;
+    margin-bottom: 20px;
 }
 
-.news-item:hover {
-    transform: translateX(10px);
+.section-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.news-item {
+    padding: 15px;
+    border-left: 3px solid #ffffff;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.news-item h2 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.news-meta {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 10px;
+}
+
+.news-content {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.read-more {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.read-more:hover {
+    opacity: 1;
 }
 
 .news-item .date {
