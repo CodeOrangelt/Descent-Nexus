@@ -26,9 +26,10 @@ html, body {
 .content-container {
     width: 60%;
     max-width: 800px;
-    margin: 0 auto;
-    margin-left: 300px; /* Space for nav bar */
-    margin-top: 50px;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-35%);
     padding: 30px;
     background-color: rgba(0, 0, 0, 0.7);
     border: 2px solid #ffffff;
@@ -110,11 +111,7 @@ html, body {
 
 /* News section styles */
 .news-section {
-    background-color: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
     padding: 20px;
-    margin-bottom: 20px;
 }
 
 .section-header {
@@ -154,15 +151,9 @@ html, body {
     margin-bottom: 15px;
 }
 
+/* Remove the read-more link styles if they exist */
 .read-more {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-.read-more:hover {
-    opacity: 1;
+    display: none;
 }
 
 .news-item .date {
