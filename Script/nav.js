@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         let dropdownContent = '';
         
         if (user) {
-            displayName = await getUserName(user.uid);
+            // Get pilot name and wait for result
+            displayName = await getUserName(user.uid) || 'Set Pilot Name';
             dropdownContent = `
                 <div class="dropdown-content">
                     <a href="#" class="change-name">Change Pilot Name</a>
@@ -54,11 +55,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const newName = prompt('Enter your new pilot name:');
                 if (newName && newName.trim()) {
                     try {
-                        await setUserName(user.uid, newName.trim());
-                        // Update the display name immediately after setting
-                        const loginLink = nav.querySelector('.login-link');
-                        loginLink.textContent = newName.trim();
-                        location.reload(); // Refresh to update all instances
+                        const success = await setUserName(user.uid, newName.trim());
+                        if (success) {
+                            const loginLink = nav.querySelector('.login-link');
+                            loginLink.textContent = newName.trim();
+                            // Don't reload, just update the text
+                            localStorage.setItem('pilotName', newName.trim());
+                        }
                     } catch (error) {
                         console.error('Error setting pilot name:', error);
                     }
@@ -94,7 +97,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Listen for auth state changes
-    auth.onAuthStateChanged(async () => {
+    auth.onAuthStateChanged(async (user) => {
+        if (user) {
+            const pilotName = await getUserName(user.uid);
+            if (pilotName) {
+                localStorage.setItem('pilotName', pilotName);
+            }
+        } else {
+            localStorage.removeItem('pilotName');
+        }
+        
         const existingNav = document.querySelector('.nav');
         if (existingNav) {
             existingNav.replaceWith(await createNavigation());

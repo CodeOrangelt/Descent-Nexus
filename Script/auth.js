@@ -71,6 +71,7 @@ async function setUserName(uid, pilotName) {
             pilotName: pilotName,
             updatedAt: new Date().toISOString()
         }, { merge: true });
+        localStorage.setItem('pilotName', pilotName);
         return true;
     } catch (error) {
         console.error('Error setting pilot name:', error);
@@ -81,9 +82,20 @@ async function setUserName(uid, pilotName) {
 // Add function to get username
 async function getUserName(uid) {
     try {
+        // First check localStorage
+        const cachedName = localStorage.getItem('pilotName');
+        if (cachedName) {
+            return cachedName;
+        }
+
+        // If not in localStorage, check Firestore
         const userDoc = await getDoc(doc(db, 'nexus_users', uid));
         if (userDoc.exists()) {
-            return userDoc.data().pilotName || 'Set Pilot Name';
+            const pilotName = userDoc.data().pilotName;
+            if (pilotName) {
+                localStorage.setItem('pilotName', pilotName);
+                return pilotName;
+            }
         }
         return 'Set Pilot Name';
     } catch (error) {
