@@ -11,57 +11,51 @@
 <body>
     <div class="hero-image"></div>
     <div class="outer-container">
-        <div class="hrcontainer">
-            <button class="hrbutton active" onclick="switchTab('news')">News</button> 
-            <button class="hrbutton" onclick="switchTab('versions')">Versions</button>
-            <button class="hrbutton" onclick="switchTab('community')">Community</button>
-            <button class="hrbutton" onclick="switchTab('staff')">Staff</button>
-            
-            <div id="news" class="tab-content active">
-                <h1 class="hero-title purple">Current Events</h1>
-                <hr>
-                <article class="news-item">
-                    <h2 class="hero-title">D3 Source Code Release!</h2>
-                    <p class="date">4/15/24</p>
-                    <p class="content">
-                        Yup! That's right, Descent 3 source code has finally been released, the community is jumping to make changes, and working alongside the original maintainer of the code Kevin Bently, there are over 0+ contributors from all over the community assisting daily... Truly exciting!
-                    </p>
-                </article>
-            </div>
+        <!-- Content will be controlled by nav.js -->
+        <div id="news" class="tab-content active">
+            <h1 class="hero-title purple">Current Events</h1>
+            <hr>
+            <article class="news-item">
+                <h2 class="hero-title">D3 Source Code Release!</h2>
+                <p class="date">4/15/24</p>
+                <p class="content">
+                    Yup! That's right, Descent 3 source code has finally been released, the community is jumping to make changes, and working alongside the original maintainer of the code Kevin Bently, there are over 0+ contributors from all over the community assisting daily... Truly exciting!
+                </p>
+            </article>
+        </div>
 
-            <div id="versions" class="tab-content">
-                <h1 class="hero-title purple">Version History</h1>
-                <hr>
-                <article class="news-item">
-                    <h2 class="hero-title">Version 1.0.0</h2>
-                    <p class="date">2/22/24</p>
-                    <p class="content">
-                        Initial release of Descent Nexus platform
-                    </p>
-                </article>
-            </div>
+        <div id="versions" class="tab-content">
+            <h1 class="hero-title purple">Version History</h1>
+            <hr>
+            <article class="news-item">
+                <h2 class="hero-title">Version 1.0.0</h2>
+                <p class="date">2/22/24</p>
+                <p class="content">
+                    Initial release of Descent Nexus platform
+                </p>
+            </article>
+        </div>
 
-            <div id="community" class="tab-content">
-                <h1 class="hero-title purple">Community Hub</h1>
-                <hr>
-                <article class="news-item">
-                    <h2 class="hero-title">Join Our Discord</h2>
-                    <p class="content">
-                        Connect with fellow Descent enthusiasts
-                    </p>
-                </article>
-            </div>
+        <div id="community" class="tab-content">
+            <h1 class="hero-title purple">Community Hub</h1>
+            <hr>
+            <article class="news-item">
+                <h2 class="hero-title">Join Our Discord</h2>
+                <p class="content">
+                    Connect with fellow Descent enthusiasts
+                </p>
+            </article>
+        </div>
 
-            <div id="staff" class="tab-content">
-                <h1 class="hero-title purple">Staff Directory</h1>
-                <hr>
-                <article class="news-item">
-                    <h2 class="hero-title">Our Team</h2>
-                    <p class="content">
-                        Meet the people behind Descent Nexus
-                    </p>
-                </article>
-            </div>
+        <div id="staff" class="tab-content">
+            <h1 class="hero-title purple">Staff Directory</h1>
+            <hr>
+            <article class="news-item">
+                <h2 class="hero-title">Our Team</h2>
+                <p class="content">
+                    Meet the people behind Descent Nexus
+                </p>
+            </article>
         </div>
     </div>
     <script src="../Script/nav.js"></script>

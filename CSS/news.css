@@ -4,6 +4,7 @@ html, body {
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #1a1a1a;
+    overflow-x: hidden;
 }
 
 .hero-image {
@@ -14,6 +15,10 @@ html, body {
     background-position: center;
     background-size: cover;
     z-index: -1;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    top: 0;
+    left: 0;
 }
 
 .outer-container {
@@ -27,6 +32,8 @@ html, body {
     padding: 30px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     position: relative;
+    margin: 50px auto;
+    margin-left: 200px; /* Makes room for nav bar */
 }
 
 .hrcontainer {
