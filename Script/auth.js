@@ -1,5 +1,11 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
+import { 
+    getAuth, 
+    signInWithEmailAndPassword, 
+    signOut,
+    browserLocalPersistence,
+    setPersistence 
+} from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDMF-bq4tpLoZvUYep_G-igmHbK2h-e-Zs",
@@ -16,12 +22,12 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Initialize cross-domain persistence
-auth.setPersistence(auth.Auth.Persistence.SESSION);
+setPersistence(auth, browserLocalPersistence);
 
 class SharedAuth {
     static async init() {
         // Initialize persistence to share across domains
-        await auth.setPersistence(auth.Auth.Persistence.SESSION);
+        await setPersistence(auth, browserLocalPersistence);
         
         // Listen for token changes
         auth.onIdTokenChanged(async user => {
