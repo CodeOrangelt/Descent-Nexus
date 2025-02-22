@@ -1,14 +1,14 @@
 function switchTab(tabId) {
-    // Remove active class from all buttons and tabs
-    document.querySelectorAll('.hrbutton').forEach(button => {
-        button.classList.remove('active');
+    // Update nav links
+    document.querySelectorAll('.content-nav-link').forEach(link => {
+        link.classList.remove('active');
     });
+    document.querySelector(`[href="#${tabId}"]`).classList.add('active');
+
+    // Update content sections
     document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
     });
-
-    // Add active class to selected button and tab
-    document.querySelector(`.hrbutton[onclick*="${tabId}"]`).classList.add('active');
     document.getElementById(tabId).classList.add('active');
 }
 

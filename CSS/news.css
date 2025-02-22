@@ -30,7 +30,7 @@ html, body {
     padding: 30px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     position: relative;
-    margin-top: 50px; /* Reduced top margin */
+    margin-top: 60px; /* Updated top margin */
 }
 
 .tab-content {
@@ -166,6 +166,35 @@ hr {
     color: #ffffff;
     border-bottom: 2px solid transparent; /* Makes it blend with container */
     z-index: 1;  /* Ensure active tab appears above others */
+}
+
+.content-nav {
+    position: absolute;
+    top: -32px;
+    left: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.content-nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    border-radius: 8px 8px 0 0;
+    border: 2px solid transparent;
+}
+
+.content-nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.content-nav-link.active {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #ffffff;
+    border-bottom: none;
 }
 
 /* Media Queries for Responsiveness */

@@ -13,27 +13,36 @@
     color: white;
     text-decoration: none;
     padding: 10px;
-    margin: 5px 0;
-    font-size: 18px;
-    transition: all 0.3s ease;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .nav a:hover {
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
+    color: purple;
 }
 
 .nav-title {
     color: white;
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 45px;
+    font-weight: bold;
+    margin: 10px;
     text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 2);
 }
 
 .nav hr {
     border: 0;
     height: 1px;
-    background: rgba(255, 255, 255, 0.3);
+    background-color: white;
     margin: 15px 0;
+}
+
+.badge {
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 12px;
+    position: absolute;
+    margin-left: 5px;
 }

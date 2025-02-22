@@ -13,12 +13,12 @@
     <div class="hero-image"></div>
     <div class="nav"></div>
     <div class="outer-container">
-        <div class="tab-buttons">
-            <button class="tab-button active" onclick="switchTab('news')">News</button>
-            <button class="tab-button" onclick="switchTab('versions')">Versions</button>
-            <button class="tab-button" onclick="switchTab('community')">Community</button>
-            <button class="tab-button" onclick="switchTab('staff')">Staff</button>
-        </div>
+        <nav class="content-nav">
+            <a href="#news" class="content-nav-link active" onclick="switchTab('news')">News</a>
+            <a href="#versions" class="content-nav-link" onclick="switchTab('versions')">Versions</a>
+            <a href="#community" class="content-nav-link" onclick="switchTab('community')">Community</a>
+            <a href="#staff" class="content-nav-link" onclick="switchTab('staff')">Staff</a>
+        </nav>
         <div id="news" class="tab-content active">
             <h1 class="hero-title purple">Current Events</h1>
             <hr>
