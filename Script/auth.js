@@ -6,7 +6,7 @@ import {
     browserLocalPersistence,
     setPersistence 
 } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
-import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
+import { getFirestore, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDMF-bq4tpLoZvUYep_G-igmHbK2h-e-Zs",
@@ -64,21 +64,35 @@ class SharedAuth {
     }
 }
 
-// Add function to get username
-async function getUserName(uid) {
+// Add function to set username
+async function setUserName(uid, pilotName) {
     try {
-        const userDoc = await getDoc(doc(db, 'players', uid));
-        if (userDoc.exists()) {
-            return userDoc.data().pilotName || 'Unknown Pilot';
-        }
-        return 'Unknown Pilot';
+        await setDoc(doc(db, 'nexus_users', uid), {
+            pilotName: pilotName,
+            updatedAt: new Date().toISOString()
+        }, { merge: true });
+        return true;
     } catch (error) {
-        console.error('Error fetching username:', error);
-        return 'Unknown Pilot';
+        console.error('Error setting pilot name:', error);
+        return false;
     }
 }
 
-export { auth, signInWithEmailAndPassword, signOut, getUserName };
+// Add function to get username
+async function getUserName(uid) {
+    try {
+        const userDoc = await getDoc(doc(db, 'nexus_users', uid));
+        if (userDoc.exists()) {
+            return userDoc.data().pilotName || 'Set Pilot Name';
+        }
+        return 'Set Pilot Name';
+    } catch (error) {
+        console.error('Error fetching username:', error);
+        return 'Set Pilot Name';
+    }
+}
+
+export { auth, signInWithEmailAndPassword, signOut, getUserName, setUserName };
 
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('authModal');

@@ -1,4 +1,4 @@
-import { auth, signOut, getUserName } from './auth.js';
+import { auth, signOut, getUserName, setUserName } from './auth.js';
 
 // Define showAuthModal function
 function showAuthModal() {
@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         let displayName = 'Login';
         if (user) {
             displayName = await getUserName(user.uid);
+            if (displayName === 'Set Pilot Name') {
+                const newName = prompt('Enter your pilot name:');
+                if (newName && newName.trim()) {
+                    await setUserName(user.uid, newName.trim());
+                    displayName = newName.trim();
+                }
+            }
             displayName += ' (Sign Out)';
         }
         const loginClass = user ? 'login-link logged-in' : 'login-link';
