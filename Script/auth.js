@@ -95,10 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             closeModal();
-            // Update UI for logged in user
             console.log('Logged in:', userCredential.user);
+            // Refresh the page to update UI
+            location.reload();
         } catch (error) {
             loginError.textContent = error.message;
+            console.error('Login error:', error);
         }
     });
 });
