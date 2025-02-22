@@ -1,4 +1,4 @@
-import { showAuthModal } from './auth.js';
+import { auth, signInWithEmailAndPassword, showAuthModal } from './auth.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     function getPathToRoot() {
