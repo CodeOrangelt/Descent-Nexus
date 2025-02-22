@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth.js"></script>
-    <script src="../Script/auth.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>See you in the mines!</title>
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth.js"></script>
+    
+    <!-- Styles -->
     <link href="cloak.ico" rel="shortcut icon" type="image/x-icon">
     <link href="./CSS/index.css" rel="stylesheet" type="text/css">
+    <link href="./CSS/nav.css" rel="stylesheet" type="text/css">
     <link href="./CSS/auth-modal.css" rel="stylesheet" type="text/css">
+    
+    <!-- Initialize Firebase -->
+    <script src="./Script/auth.js"></script>
 </head>
 <body>
     <div class="hero-image">
@@ -17,8 +24,10 @@
             <h1>Gateway to all things Descent</h1>
         </div>
     </div>
-    <!-- Nav will be populated by nav.js -->
+    
+    <!-- Navigation -->
     <div class="nav"></div>
+    
     <div class="outer-container">
         <!-- ...existing container content... -->
     </div>
@@ -37,11 +46,8 @@
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="./Script/nav.js"></script>
     <script src="./Script/auth-modal.js"></script>
 </body>
 </html>
-
-
-
-
