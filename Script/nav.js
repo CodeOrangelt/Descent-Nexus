@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Configuration for navigation items
     const navConfig = [
-        { path: '/index.html', text: 'Nexus' },
+        { path: './index.html', text: 'Nexus' },
         { path: 'https://rdl.descentnexus.com', text: 'RDL', target: '_blank' },
-        { path: '/HTML/news.html', text: 'News' },
+        { path: './HTML/news.html', text: 'News' },
         { path: '#', text: 'Project D' },
         { type: 'divider' },
-        { path: '/HTML/login.html', text: 'Login' },
-        { path: '/HTML/signup.html', text: 'Sign up' },
-        { path: '/HTML/inbox.html', text: 'Notifications', class: 'nav-notification' }
+        { path: './HTML/login.html', text: 'Login' },
+        { path: './HTML/signup.html', text: 'Sign up' },
+        { path: './HTML/inbox.html', text: 'Notifications', class: 'nav-notification' }
     ];
 
     // Function to create navigation
