@@ -28,7 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add event listener after creating the element
         nav.querySelector('.login-link').addEventListener('click', (e) => {
             e.preventDefault();
-            showAuthModal();
+            if (typeof window.showAuthModal === 'function') {
+                window.showAuthModal();
+            } else {
+                console.error('Auth modal function not available');
+            }
         });
 
         return nav;
