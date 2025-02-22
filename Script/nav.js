@@ -1,4 +1,4 @@
-import { auth, signInWithEmailAndPassword, showAuthModal } from './auth.js';
+import { auth, signInWithEmailAndPassword } from './auth.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     function getPathToRoot() {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <a href="#" class="login-link">Login</a>
         `;
 
-        // Update event listener to use imported showAuthModal
+        // Use the showAuthModal function directly
         nav.querySelector('.login-link').addEventListener('click', (e) => {
             e.preventDefault();
             showAuthModal();
