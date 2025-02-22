@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { path: './HTML/projectd.html', text: 'Project D' },
         { type: 'divider' },
         { path: './HTML/login.html', text: 'Login' },
-        { path: './HTML/signup.html', text: 'Sign up' },
-        { path: 'HTML/inbox.html', text: 'Notifications', class: 'nav-notification' }
+        { path: './HTML/signup.html', text: 'Sign up' }
     ];
 
     // Function to create navigation
