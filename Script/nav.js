@@ -1,4 +1,4 @@
-import { auth, signInWithEmailAndPassword } from './auth.js';
+import { auth, signInWithEmailAndPassword, signOut } from './auth.js';
 
 // Define showAuthModal function
 function showAuthModal() {
@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const nav = document.createElement('div');
         nav.className = 'nav';
 
+        // Check if user is logged in
+        const user = auth.currentUser;
+        const loginText = user ? `${user.email} (Sign Out)` : 'Login';
+        const loginClass = user ? 'login-link logged-in' : 'login-link';
+
         const rootPath = getPathToRoot();
         
         nav.innerHTML = `
@@ -25,13 +30,22 @@ document.addEventListener('DOMContentLoaded', () => {
             <a href="${rootPath}HTML/news.html">News</a>
             <a href="${rootPath}HTML/projectd.html">Project D</a>
             <hr>
-            <a href="#" class="login-link">Login</a>
+            <a href="#" class="${loginClass}">${loginText}</a>
         `;
 
-        // Add click event listener for login
-        nav.querySelector('.login-link').addEventListener('click', (e) => {
+        // Add click event listener for login/logout
+        nav.querySelector('.login-link').addEventListener('click', async (e) => {
             e.preventDefault();
-            showAuthModal();
+            if (auth.currentUser) {
+                try {
+                    await signOut(auth);
+                    location.reload(); // Refresh to update UI
+                } catch (error) {
+                    console.error('Error signing out:', error);
+                }
+            } else {
+                showAuthModal();
+            }
         });
 
         return nav;
@@ -44,6 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         document.body.prepend(createNavigation());
     }
+
+    // Listen for auth state changes
+    auth.onAuthStateChanged(() => {
+        const existingNav = document.querySelector('.nav');
+        if (existingNav) {
+            existingNav.replaceWith(createNavigation());
+        }
+    });
 });
 
 // Optional: Add dynamic notification update

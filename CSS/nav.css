@@ -46,3 +46,12 @@
     position: absolute;
     margin-left: 5px;
 }
+
+.login-link.logged-in {
+    color: #00ff00;
+}
+
+.login-link.logged-in:hover {
+    color: #ff0000;
+    cursor: pointer;
+}

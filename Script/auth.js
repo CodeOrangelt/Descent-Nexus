@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
+import { getAuth, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDMF-bq4tpLoZvUYep_G-igmHbK2h-e-Zs",
@@ -56,7 +56,7 @@ class SharedAuth {
     }
 }
 
-export { auth, signInWithEmailAndPassword };
+export { auth, signInWithEmailAndPassword, signOut };
 
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('authModal');
