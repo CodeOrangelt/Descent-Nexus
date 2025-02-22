@@ -15,6 +15,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+// Initialize cross-domain persistence
+auth.setPersistence(auth.Auth.Persistence.SESSION);
+
 class SharedAuth {
     static async init() {
         // Initialize persistence to share across domains
@@ -95,6 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Function to show modal
-window.showAuthModal = function() {
+export function showAuthModal() {
     document.getElementById('authModal').style.display = 'block';
-};
+}
