@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descent Nexus</title>
+    <link rel="shortcut icon" type="image/x-icon" href="cloak.ico">
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            position: relative;
+            background-image: url("../Assets/descentspace.png");
+            background-position: center;
+            background-size: cover;
+            scroll-snap-type: y proximity;
+            scroll-padding-top: 10vh; /* Padding at the top of the scroll container */
+        }
+
+       .wrapper {
+            min-height: 100%;
+            border: 7px solid purple;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+            background-image: url("./descentspace.png");
+            background-position: center;
+            background-size: cover;
+            font-family: Arial, Helvetica, sans-serif;
+            scroll-snap-type: y proximity;
+            scroll-padding-top: 10vh; /* Padding at the top of the scroll container */
+        }
+
+        .nav {
+            position: fixed;
+            top: 50%;
+            left: 2%;
+            transform: translateY(-50%);
+            width: 10%;
+            z-index: 2;
+            background-color: black;
+            border-radius: 10px;
+            padding: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            border: 4px solid black;
+            animation: shimmer 1;
+        }
+        
+        .nav .logo {
+            width: 40px;
+            height: auto;
+            margin-bottom: -30px;
+            z-index: 3;
+            position: relative;
+            top: -30px;
+        }
+        
+        .nav a {
+            color: white;
+            display: block;
+            padding: 10px;
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .nav a:hover {
+            color: purple;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+
+        .content {
+            padding: 20px;
+            margin: 80px 10%;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            word-wrap: break-word;
+            width: 45%;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative; /* Ensure the shimmering border stays within bounds */
+            border: 4px solid black; /* Default black border */
+        }
+        
+        .profile:hover {
+            border-image: linear-gradient(90deg, gold, black, gold) 1;
+            border-image-slice: 1;
+            animation: shimmer 3s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                border-image: linear-gradient(90deg, gold, black, gold) 1;
+            }
+            100% {
+                border-image: linear-gradient(450deg, gold, black, gold) 1;
+            }
+        }
+
+
+        .profile:hover {
+            transform: scale(1.05);
+        }
+    
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            
+        }
+    
+        .profile h2,
+        .profile p {
+            text-align: center;
+        }
+
+        .works-container {
+            text-align: center;
+        }
+
+        .works-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .works-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        
+        .work-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            border: 4px solid black; /* Default black border */
+        }
+        
+        .work-item:hover {
+            border-image: linear-gradient(90deg, purple, black, purple) 1;
+            border-image-slice: 1;
+            animation: shimmer 3s linear infinite;
+            transform: scale(1.05); 
+        }
+    
+        @keyframes shimmer {
+            0% {
+                border-image: linear-gradient(90deg, purple, black, purple) 1;
+            }
+            100% {
+                border-image: linear-gradient(450deg, purple, black, purple) 1;
+            }
+        }
+
+        .work-logo {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 130px; /* Increased width to accommodate both arrow and text */
+            height: 50px; /* Adjusted height to keep the circle shape */
+            border-radius: 25px; /* Border radius to form a rounded rectangle */
+            background-color: black; /* Background color of the button */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white; /* Text color */
+        }
+        .back-button-arrow {
+            fill: white; /* Arrow color */
+            width: 24px; /* Width of the arrow */
+            height: 24px; /* Height of the arrow */
+            margin-right: 8px; /* Space between the arrow and text */
+            transform: rotate(90deg); /* Rotate by -90 degrees */
+        }
+        .back-button-text {
+            font-size: 23px; /* Size of the text */
+        }
+        .back-button:hover .back-button-arrow {
+            fill: gray; /* Hover color for the arrow */
+        }
+        .back-button:hover .back-button-text {
+            color: gray; /* Hover color for the text */
+        }
+        
+        .scroll-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+            scroll-snap-align: start;
+        }
+
+        .section3 {
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            gap: 20px;
+        }
+
+        .content-boxes {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align boxes to the start of the container */
+        }
+        
+        .box {
+            background-color: white;
+            padding: 40px;
+            font-size: .7em;
+            margin: 10px;
+            width: auto; /* Set width to auto to allow expansion */
+            white-space: normal; /* Allow text wrapping */
+            max-width: 500px; /* Set a maximum width for the box */
+            word-wrap: break-word; /* Ensure long words are broken and wrapped */
+            border: 5px solid purple; /* Default black border */
+            border-radius: 13px;
+        }
+        
+        .box:hover {
+            transform: scale(1.05);
+            border-radius: 13px;
+            transition: transform .3s; 
+        }
+
+        .header {
+            font-size: 1.4em;
+            font-weight: bold;
+            text-decoration: underline;
+            color: purple;
+        }
+        .subtext {
+            font-size: 1em;
+            color: grey;
+            margin-top: 10px;
+        }
+        .image-container {
+            width: 800px; 
+            height: 800px; 
+            overflow: hidden;
+            border-radius: 10px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: -200px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .spacer {
+            height: 10vh;
+            background-color: transparent;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="content">
+    
+    <a href="projectd.php" class="back-button">
+        <div class="back-button-circle">
+            <svg class="back-button-arrow" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 15L2 8l8-7 1.5 1.5L5 8l6.5 5.5z"/>
+            </svg>
+        </div>
+        <span class="back-button-text">Back up</span>
+    </a> 
+    
+    <div class="nav">
+        <img src="../Assets/cloak.ico" alt="Logo" class="logo">
+        <a href="./index.php">Nexus</a>
+        <a href="./rdl.html">RDL</a>
+        <a href="./news.html">News</a>
+    </div>
+        <div class="profile-container">
+            <div class="profile">
+                <img src="../Assets/codepfp.gif" alt="Code">
+                <h2>Code <br> <span style="color: purple;">Founder</span></h2>
+                <p>It all started in 2016, I logged onto descent multiplayer only to realize the vast competitive world that I had yet to discover. In 2020 the DCL shut down putting competitive descent, and the active scene at an all time low. Me and B2af's vision is to reverse this, and keep the game alive!</p>
+            </div>
+            <div class="profile">
+                <img src="../Assets/e91627076786448e97b53f1c07db0293 (1).png" alt="B2af">
+                <h2>B2af <br> <span style="color: purple;">Founder</span></h2>
+                <p></p>
+            </div>
+        </div>
+        
+
+        <div class="works-container">
+            <h2 class="works-title"; style="color: white;">How we're contributing</h2>
+            <div class="works-grid">
+                <div class="work-item">
+                    <img src="../Assets/proxypodcast.png" alt="Proxy Podcast Logo" class="work-logo">
+                    <h3>Proxy Podcast</h3>
+                    <p>A podcast dedicated to immersing any listener to the community, and lesser known facts of the Descent franchise</p>
+                </div>
+                <div class="work-item">
+                    <img src="../Assets/youtube.png" alt="Youtube Content Logo" class="work-logo">
+                    <h3>Youtube content</h3>
+                    <p>Long-term, instructional, demos, and shorts-based content all about Descent. Always looking for parters. You help us, we help you!</p>
+                </div>
+                <div class="work-item">
+                    <img src="../Assets/cloak.ico" alt="Descent Nexus Logo" class="work-logo">
+                    <h3>Descent Nexus</h3>
+                    <p>The hub for all things Descent, from ladders, to current news, versions, events, honors, and more!</p>
+                </div>
+                <div class="work-item">
+                    <br>
+                    <img src="../Assets/image_2024-04-24_201752179.png" alt="RDL Logo" class="work-logo"> 
+                    <h3>RDL</h3>
+                    <p>The current Descent competitive ladder, bringing statistics, records, and lots of fun. We're leading the way!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="spacer"></div>
+
+    <div class="scroll-section section3">
+        
+        <div class="content-boxes">
+            <div class="box">
+                <div class="header">What is our goal?</div>
+                <div class="subtext">Project D is the idea for community cooperation. It's an idea, a movement dedicated to prolonging and preserving the community. We want new innovations, new versions, new players, and new modern takes to the game. The idea is that if we can get enough people motivated to create content, drive, and buzz for the game we can bring this game back to it's former glory! Project D doesn't seek admiration, or credit, it's simply the foundation for a movement from a group of like-minded gamers.</div>
+            </div>
+            <div class="box">
+                <div class="header">Ok, so how can I contribute?</div>
+                <div class="subtext">That's a great question! Project D's aim is to house and boost content or innovations anyone from the descent community has. New map? We'll post it! Making D1 Videos? We'll push your channel! We want to be the hub for EVERYTHING descent, so if you love the game and want to do more, you have a home on our website!</div>
+            </div>
+        </div>
+        
+        <div class="image-container">
+            <img src="../Assets/1v1 (2).PNG" alt="1v1 Dogfight">
+        </div>
+    </div>
+    
+</body>
+
+    <script>
+    // Wait for page load
+    document.addEventListener('DOMContentLoaded', () => {
+        let hasScrolled = false;
+
+        // Add scroll listener
+        window.addEventListener('scroll', () => {
+            if (!hasScrolled) {
+                hasScrolled = true;
+                scrollToBottom();
+            }
+        });
+
+        // Scroll to bottom function
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+    });
+    </script>
+</html>
+
