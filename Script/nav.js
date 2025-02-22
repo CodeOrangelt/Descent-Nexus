@@ -2,7 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to get relative path to root
     function getPathToRoot() {
         const path = window.location.pathname;
-        const depth = path.split('/').length - 2; // -2 for leading slash and filename
+        const matches = path.match(/Descent-Nexus/);
+        if (!matches) return './';
+        
+        const pathAfterRepo = path.slice(path.indexOf('Descent-Nexus') + 13);
+        const depth = pathAfterRepo.split('/').filter(Boolean).length;
         return depth > 0 ? '../'.repeat(depth) : './';
     }
 
@@ -46,10 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 nav.appendChild(document.createElement('hr'));
             } else {
                 const link = document.createElement('a');
-                // Only modify relative paths, not absolute URLs
-                link.href = item.path.startsWith('http') ? 
-                    item.path : 
-                    `${rootPath}${item.path}`;
+                
+                // Handle paths based on type
+                if (item.path.startsWith('http')) {
+                    link.href = item.path;
+                } else {
+                    // Ensure proper path construction
+                    const finalPath = item.path.startsWith('/') ? 
+                        item.path.slice(1) : item.path;
+                    link.href = `${rootPath}${finalPath}`;
+                }
+                
                 link.textContent = item.text;
                 
                 if (item.target) {
@@ -61,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Highlight current page
-                if (window.location.pathname.endsWith(item.path)) {
+                const currentPath = window.location.pathname.split('/').pop();
+                if (item.path.endsWith(currentPath)) {
                     link.classList.add('active');
                 }
 
