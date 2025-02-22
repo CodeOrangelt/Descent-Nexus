@@ -6,6 +6,7 @@ import {
     browserLocalPersistence,
     setPersistence 
 } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
+import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDMF-bq4tpLoZvUYep_G-igmHbK2h-e-Zs",
@@ -20,6 +21,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 // Initialize cross-domain persistence
 setPersistence(auth, browserLocalPersistence);
@@ -62,7 +64,21 @@ class SharedAuth {
     }
 }
 
-export { auth, signInWithEmailAndPassword, signOut };
+// Add function to get username
+async function getUserName(uid) {
+    try {
+        const userDoc = await getDoc(doc(db, 'players', uid));
+        if (userDoc.exists()) {
+            return userDoc.data().pilotName || 'Unknown Pilot';
+        }
+        return 'Unknown Pilot';
+    } catch (error) {
+        console.error('Error fetching username:', error);
+        return 'Unknown Pilot';
+    }
+}
+
+export { auth, signInWithEmailAndPassword, signOut, getUserName };
 
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('authModal');
