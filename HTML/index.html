@@ -1,174 +1,14 @@
 <!DOCTYPE html>
 <html>
-    
-             
-        <script>
-          function updateDateTime() {
-            var datetimeElement = document.getElementById('datetime');
-            var now = new Date();
-            var month = String(now.getMonth() + 1).padStart(2, '0');
-            var day = String(now.getDate()).padStart(2, '0');
-            var year = now.getFullYear();
-        
-            var formattedDate = month + '/' + day + '/' + year;
-        
-            datetimeElement.innerHTML = ' ' + formattedDate;
-          }
-        
-          // Update the date every second
-          setInterval(updateDateTime, 1000);
-        </script>
-
-    <head>
-        	<title>See you in the mines!</title>
-        	<link href="cloak.ico" rel="shortcut icon" type="image/x-icon">
-        
-        <body>
-
-          <style>
-          
-          html, body {
-                  height: auto 0;
-                  margin: auto 0;
-                  padding: 0;
-                  font-family: Arial, Helvetica, sans-serif;
-                }
-    
-        .nav {
-            position: fixed;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            width: 10%;
-            z-index: 2;
-            background-color: transparent;
-            padding: 20px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .nav a {
-            color: white;
-            display: block;
-            padding: 10px;
-            font-size: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease; /* Adding transition effect */
-        }
-
-        .nav a:hover {
-            color: purple;
-            background-color: rgba(255, 255, 255, 0.1); /* Chanage background color on hover */
-            border-radius: 5px; /* Add rounded corners to buttons */
-        }
-
-        .nav-title {
-            color: white;
-            font-size: 45px;
-            font-weight: bold;
-            margin: 10px;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 2); /* Adding shadow effect */
-        }
-        
-        .nav-notification
-        {
-            color: white;
-            display: block;
-            padding: 10px;
-            font-size: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease; /* Adding transition effect */
-            border: 1px solid red;
-            border-radius: 5px;
-        }
-        
-        .nav-notification a:hover {
-            color: purple;
-            background-color: rgba(255, 255, 255, 0.1); /* Chanage background color on hover */
-            border-radius: 5px; /* Add rounded corners to buttons */
-        }
-	                     
-	                     
-            form {
-              max-width: 400px;
-              margin: 0 auto;
-            
-              
-            }
-          
-            label, input {
-              display: block;
-              margin-bottom: 1px;
-              color:black;
-              
-            }
-          
-            input[type="submit"] {
-              background-color: #ee210e;
-              color: white;
-              padding: 5px 20px;
-              border: none;
-              cursor: pointer;
-            }
-            
-        .hero-image {
-                  position: absolute;
-                  width: 100%;
-                  height: 100%;
-                  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("1500x500.jfif");
-                  background-position: center;
-                  background-size: cover;
-                  z-index: -1;
-                }
-
-        .transparent-box {
-          background-color: rgba(0, 0, 0, 0.8);
-          padding: 5px;
-          border: 1px solid white;
-          border-radius: 10px;
-          width: 40%;
-          height: 20%;
-          margin: 80px auto 0;
-        }
-        
-       .winner-loser-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        }
-    
-        .box-content {
-            color: white;
-            font-size: 14px;
-            margin: 0 5px;
-        }
-        
-        .winner {
-            margin-right: 300px;
-        }
-        
-        .badge {
-          position: absolute;
-          top: 430px;
-          right: -7px;
-          padding: 3px 8px;
-          border-radius: 50%;
-          background-color: red;
-          color: white;
-          font: tahoma;
-        }    
-                          
-</style>
-
+<head>
+    <title>See you in the mines!</title>
+    <link href="cloak.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="../CSS/index.css" rel="stylesheet" type="text/css">
+</head>
 <body>
-    
-    <div class="hero-image">
-    </div>
+    <div class="hero-image"></div>
 
-         
-              <!-- Navigation Bar -->
+    <!-- Navigation Bar -->
     <div class="nav">
         <h1 class="nav-title">Descent Nexus</h1>
         <hr>
@@ -180,29 +20,19 @@
         <a href="./login.html">Login</a>
         <a href="./signup.html">Sign up</a>
         <a href="./inbox.html" class="nav-notification">Notifications</a>
-            <span id="badge" class="badge">!</span>
-
-            
+        <span id="badge" class="badge">!</span>
     </div>
                
-  <!-- Content goes here -->
-  
-<br>
-<br>
-
-<div class="transparent-box">
-    <div id="datetime" style= "color: white; font-size: 10px"></div>
-    <label style="color: orange; text-align: center;">RDL - GAME TYPE - LEVEL</label>
-    <hr style= "width: 30%"></hr>
-    <br>
-    <label style="color: white; text-align: center; font-size: 13px; top: 10%">PLAYER has reported a win against you in LEVEL with the score of XX-XX.</label>
-    <br>
-    <a href="rdl-report-solo.html" style="text-decoration: underline; color: orange; text-align: center; display: block;">GO TO RDL</a>
-    <div class="winner-loser-container">
+    <!-- Content goes here -->
+    <div class="transparent-box">
+        <div id="datetime" class="datetime"></div>
+        <label class="game-header">RDL - GAME TYPE - LEVEL</label>
+        <hr class="divider">
+        <label class="game-result">PLAYER has reported a win against you in LEVEL with the score of XX-XX.</label>
+        <a href="rdl-report-solo.html" class="rdl-link">GO TO RDL</a>
+        <div class="winner-loser-container"></div>
     </div>
-</div>
-  </body>
- </head>
+</body>
 </html>
 
 
