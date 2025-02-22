@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
+import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDMF-bq4tpLoZvUYep_G-igmHbK2h-e-Zs",
@@ -34,7 +34,7 @@ class SharedAuth {
 
     static async signIn(email, password) {
         try {
-            const userCredential = await auth.signInWithEmailAndPassword(email, password);
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const token = await userCredential.user.getIdToken();
             return { success: true, token };
         } catch (error) {
@@ -53,4 +53,48 @@ class SharedAuth {
     }
 }
 
-export { auth };
+export { auth, signInWithEmailAndPassword };
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('authModal');
+    const closeBtn = document.querySelector('.close');
+    const loginForm = document.getElementById('loginForm');
+    const loginError = document.getElementById('loginError');
+
+    // Close modal function
+    function closeModal() {
+        modal.style.display = 'none';
+        loginError.textContent = '';
+    }
+
+    // Close button click
+    closeBtn.addEventListener('click', closeModal);
+
+    // Click outside modal
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Login form submission
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            closeModal();
+            // Update UI for logged in user
+            console.log('Logged in:', userCredential.user);
+        } catch (error) {
+            loginError.textContent = error.message;
+        }
+    });
+});
+
+// Function to show modal
+window.showAuthModal = function() {
+    document.getElementById('authModal').style.display = 'block';
+};

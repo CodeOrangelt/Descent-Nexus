@@ -20,13 +20,6 @@
     position: relative;
 }
 
-.login-title {
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
 .close {
     color: #ffffff;
     float: right;
@@ -35,25 +28,10 @@
     cursor: pointer;
 }
 
-.auth-tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.tab-button {
-    background: none;
-    border: none;
+.login-title {
     color: #ffffff;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    opacity: 0.7;
-}
-
-.tab-button.active {
-    opacity: 1;
-    border-bottom: 2px solid #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .auth-form {
@@ -78,16 +56,10 @@
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.auth-form button:hover {
-    background-color: rgba(255,255,255,0.8);
 }
 
 .error {
     color: #ff0000;
     font-size: 14px;
     text-align: center;
-    min-height: 20px;
 }
