@@ -68,16 +68,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('authModal');
     const closeBtn = document.querySelector('.close');
     const loginForm = document.getElementById('loginForm');
+    const loginButton = document.getElementById('loginButton');
     const loginError = document.getElementById('loginError');
 
-    // Close modal function
     function closeModal() {
         modal.style.display = 'none';
         loginError.textContent = '';
     }
 
     // Close button click
-    closeBtn.addEventListener('click', closeModal);
+    closeBtn?.addEventListener('click', closeModal);
 
     // Click outside modal
     window.addEventListener('click', (e) => {
@@ -86,21 +86,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Login form submission
-    loginForm.addEventListener('submit', async (e) => {
+    // Add click handler for login button
+    loginButton?.addEventListener('click', async (e) => {
         e.preventDefault();
         const email = document.getElementById('loginEmail').value;
         const password = document.getElementById('loginPassword').value;
         
         try {
+            loginButton.disabled = true; // Prevent double-clicks
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            closeModal();
             console.log('Logged in:', userCredential.user);
-            // Refresh the page to update UI
-            location.reload();
+            closeModal();
+            location.reload(); // Refresh to update UI
         } catch (error) {
-            loginError.textContent = error.message;
             console.error('Login error:', error);
+            loginError.textContent = error.message;
+        } finally {
+            loginButton.disabled = false;
         }
     });
 });

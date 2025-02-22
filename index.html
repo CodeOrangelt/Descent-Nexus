@@ -28,12 +28,12 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2 class="login-title">Login</h2>
-            <div id="loginForm" class="auth-form">
-                <input type="email" id="loginEmail" placeholder="Email">
-                <input type="password" id="loginPassword" placeholder="Password">
-                <button id="loginButton">Login</button>
+            <form id="loginForm" class="auth-form">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit" id="loginButton">Login</button>
                 <p class="error" id="loginError"></p>
-            </div>
+            </form>
         </div>
     </div>
 
