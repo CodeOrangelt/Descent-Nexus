@@ -48,11 +48,11 @@
 }
 
 .login-link.logged-in {
-    color: #750790;
+    color: #ffffff;
 }
 
 .login-link.logged-in:hover {
-    color: #590a6c;
+    color: purple;
     cursor: pointer;
 }
 
