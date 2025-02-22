@@ -1,4 +1,3 @@
-// Add import at the top
 import { showAuthModal } from './auth.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const rootPath = getPathToRoot();
         
-        // Create nav content
         nav.innerHTML = `
             <h1 class="nav-title">Descent Nexus</h1>
             <hr>
@@ -25,20 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
             <a href="#" class="login-link">Login</a>
         `;
 
-        // Add event listener after creating the element
+        // Update event listener to use imported showAuthModal
         nav.querySelector('.login-link').addEventListener('click', (e) => {
             e.preventDefault();
-            if (typeof window.showAuthModal === 'function') {
-                window.showAuthModal();
-            } else {
-                console.error('Auth modal function not available');
-            }
+            showAuthModal();
         });
 
         return nav;
     }
 
-    // Initialize navigation
     const existingNav = document.querySelector('.nav');
     if (existingNav) {
         existingNav.replaceWith(createNavigation());
@@ -64,3 +57,11 @@ async function updateNotifications() {
 
 // Check for notifications periodically
 setInterval(updateNotifications, 60000); // Check every minute
+
+// Move the showAuthModal function definition before the exports
+export function showAuthModal() {
+    document.getElementById('authModal').style.display = 'block';
+}
+
+// Change the exports section at the top
+export { auth, signInWithEmailAndPassword, showAuthModal };
