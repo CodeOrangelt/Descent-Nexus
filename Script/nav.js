@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Firebase
+    const firebaseConfig = {
+        // Your Firebase config here
+        apiKey: "AIzaSyDMF-bq4tpLoZvUYep_G-igmHbK2h-e-Zs",
+        authDomain: "rdladder.firebaseapp.com",
+        projectId: "rdladder",
+        storageBucket: "rdladder.firebasestorage.app",
+        messagingSenderId: "152922774046",
+        appId: "1:152922774046:web:c14bd25f07ad1aa0366c0f",
+        measurementId: "G-MXVPNC0TVJ"
+    };
+
+    // Initialize Firebase if not already initialized
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+
     // Function to get relative path to root
     function getPathToRoot() {
         const path = window.location.pathname;
@@ -16,9 +33,35 @@ document.addEventListener('DOMContentLoaded', () => {
         { path: './HTML/news.html', text: 'News' },
         { path: './HTML/projectd.html', text: 'Project D' },
         { type: 'divider' },
-        { path: './HTML/login.html', text: 'Login' },
-        { path: './HTML/signup.html', text: 'Sign up' }
+        { id: 'authLinks', dynamic: true } // Dynamic auth links
     ];
+
+    // Function to update auth links
+    function updateAuthLinks(nav) {
+        const authLinksContainer = nav.querySelector('#authLinks');
+        if (!authLinksContainer) return;
+
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                // User is signed in
+                authLinksContainer.innerHTML = `
+                    <a href="./HTML/profile.html">${user.displayName || user.email}</a>
+                    <a href="#" id="signOutBtn">Sign Out</a>
+                `;
+                // Add sign out handler
+                document.getElementById('signOutBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    firebase.auth().signOut();
+                });
+            } else {
+                // User is signed out
+                authLinksContainer.innerHTML = `
+                    <a href="./HTML/login.html">Login</a>
+                    <a href="./HTML/signup.html">Sign up</a>
+                `;
+            }
+        });
+    }
 
     // Function to create navigation
     function createNavigation() {
@@ -39,6 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
         navConfig.forEach(item => {
             if (item.type === 'divider') {
                 nav.appendChild(document.createElement('hr'));
+            } else if (item.dynamic) {
+                const container = document.createElement('div');
+                container.id = item.id;
+                nav.appendChild(container);
             } else {
                 const link = document.createElement('a');
                 
@@ -82,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.appendChild(badge);
         }
 
+        updateAuthLinks(nav);
         return nav;
     }
 
