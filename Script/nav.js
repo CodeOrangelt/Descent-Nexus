@@ -2,23 +2,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to get relative path to root
     function getPathToRoot() {
         const path = window.location.pathname;
-        const matches = path.match(/Descent-Nexus/);
-        if (!matches) return './';
-        
-        const pathAfterRepo = path.slice(path.indexOf('Descent-Nexus') + 13);
-        const depth = pathAfterRepo.split('/').filter(Boolean).length;
-        return depth > 0 ? '../'.repeat(depth) : './';
+        // Check if we're in the HTML directory
+        if (path.includes('/HTML/')) {
+            return '../';
+        }
+        return './';
     }
 
     // Configuration for navigation items
     const navConfig = [
-        { path: 'index.html', text: 'Nexus' },
+        { path: './index.html', text: 'Nexus' },
         { path: 'https://rdl.descentnexus.com', text: 'RDL', target: '_blank' },
-        { path: 'HTML/news.html', text: 'News' },
-        { path: 'HTML/projectd.html', text: 'Project D' },
+        { path: './HTML/news.html', text: 'News' },
+        { path: './HTML/projectd.html', text: 'Project D' },
         { type: 'divider' },
-        { path: 'HTML/login.html', text: 'Login' },
-        { path: 'HTML/signup.html', text: 'Sign up' },
+        { path: './HTML/login.html', text: 'Login' },
+        { path: './HTML/signup.html', text: 'Sign up' },
         { path: 'HTML/inbox.html', text: 'Notifications', class: 'nav-notification' }
     ];
 
@@ -51,13 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 const link = document.createElement('a');
                 
-                // Handle paths based on type
+                // Handle paths based on location
                 if (item.path.startsWith('http')) {
                     link.href = item.path;
                 } else {
-                    // Ensure proper path construction
-                    const finalPath = item.path.startsWith('/') ? 
-                        item.path.slice(1) : item.path;
+                    // Remove ./ from the beginning if we're already at root
+                    const finalPath = rootPath === './' ? 
+                        item.path.replace('./', '') : 
+                        item.path.replace('./', '');
                     link.href = `${rootPath}${finalPath}`;
                 }
                 
