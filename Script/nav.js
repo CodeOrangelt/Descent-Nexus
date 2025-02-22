@@ -26,13 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.className = 'nav';
         const rootPath = getPathToRoot();
 
-        // Add logo
-        const logo = document.createElement('img');
-        logo.src = `${rootPath}Assets/cloak.png`;
-        logo.alt = 'Logo';
-        logo.className = 'logo';
-        nav.appendChild(logo);
-
         // Add title
         const title = document.createElement('h1');
         title.className = 'nav-title';
