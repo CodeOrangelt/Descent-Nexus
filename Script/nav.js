@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { path: './index.html', text: 'Nexus' },
         { path: 'https://rdl.descentnexus.com', text: 'RDL', target: '_blank' },
         { path: './HTML/news.html', text: 'News' },
-        { path: '#', text: 'Project D' },
+        { path: './HTML/projectd.html', text: 'Project D' },
         { type: 'divider' },
         { path: './HTML/login.html', text: 'Login' },
         { path: './HTML/signup.html', text: 'Sign up' },
