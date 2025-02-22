@@ -15,20 +15,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         const nav = document.createElement('div');
         nav.className = 'nav';
 
-        // Check if user is logged in and get username
         const user = auth.currentUser;
         let displayName = 'Login';
+        let dropdownContent = '';
+        
         if (user) {
             displayName = await getUserName(user.uid);
-            if (displayName === 'Set Pilot Name') {
-                const newName = prompt('Enter your pilot name:');
-                if (newName && newName.trim()) {
-                    await setUserName(user.uid, newName.trim());
-                    displayName = newName.trim();
-                }
-            }
-            displayName += ' (Sign Out)';
+            dropdownContent = `
+                <div class="dropdown-content">
+                    <a href="#" class="change-name">Change Pilot Name</a>
+                    <a href="#" class="sign-out">Sign Out</a>
+                </div>
+            `;
         }
+        
         const loginClass = user ? 'login-link logged-in' : 'login-link';
 
         const rootPath = getPathToRoot();
@@ -41,23 +41,39 @@ document.addEventListener('DOMContentLoaded', async () => {
             <a href="${rootPath}HTML/news.html">News</a>
             <a href="${rootPath}HTML/projectd.html">Project D</a>
             <hr>
-            <a href="#" class="${loginClass}">${displayName}</a>
+            <div class="dropdown">
+                <a href="#" class="${loginClass}">${displayName}</a>
+                ${dropdownContent}
+            </div>
         `;
 
-        // Add click event listener for login/logout
-        nav.querySelector('.login-link').addEventListener('click', async (e) => {
-            e.preventDefault();
-            if (auth.currentUser) {
+        if (user) {
+            // Add event listener for changing name
+            nav.querySelector('.change-name').addEventListener('click', async (e) => {
+                e.preventDefault();
+                const newName = prompt('Enter your new pilot name:');
+                if (newName && newName.trim()) {
+                    await setUserName(user.uid, newName.trim());
+                    location.reload();
+                }
+            });
+
+            // Add event listener for sign out
+            nav.querySelector('.sign-out').addEventListener('click', async (e) => {
+                e.preventDefault();
                 try {
                     await signOut(auth);
-                    location.reload(); // Refresh to update UI
+                    location.reload();
                 } catch (error) {
                     console.error('Error signing out:', error);
                 }
-            } else {
+            });
+        } else {
+            nav.querySelector('.login-link').addEventListener('click', (e) => {
+                e.preventDefault();
                 showAuthModal();
-            }
-        });
+            });
+        }
 
         return nav;
     }
