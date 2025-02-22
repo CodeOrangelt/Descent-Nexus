@@ -53,8 +53,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 e.preventDefault();
                 const newName = prompt('Enter your new pilot name:');
                 if (newName && newName.trim()) {
-                    await setUserName(user.uid, newName.trim());
-                    location.reload();
+                    try {
+                        await setUserName(user.uid, newName.trim());
+                        // Update the display name immediately after setting
+                        const loginLink = nav.querySelector('.login-link');
+                        loginLink.textContent = newName.trim();
+                        location.reload(); // Refresh to update all instances
+                    } catch (error) {
+                        console.error('Error setting pilot name:', error);
+                    }
                 }
             });
 
