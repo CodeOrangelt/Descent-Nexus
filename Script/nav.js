@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Configuration for navigation items
     const navConfig = [
-        { path: './index.html', text: 'Nexus' },
+        { path: './HMTL/index.html', text: 'Nexus' },
         { path: 'https://rdl.descentnexus.com', text: 'RDL', target: '_blank' },
         { path: './HTML/news.html', text: 'News' },
         { path: './HTML/projectd.html', text: 'Project D' },
