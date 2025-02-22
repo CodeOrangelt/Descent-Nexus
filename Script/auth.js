@@ -1,4 +1,6 @@
-// Use the same Firebase config from RDL
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js';
+
 const firebaseConfig = {
     apiKey: "AIzaSyDMF-bq4tpLoZvUYep_G-igmHbK2h-e-Zs",
     authDomain: "rdladder.firebaseapp.com",
@@ -10,15 +12,16 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 class SharedAuth {
     static async init() {
         // Initialize persistence to share across domains
-        await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+        await auth.setPersistence(auth.Auth.Persistence.SESSION);
         
         // Listen for token changes
-        firebase.auth().onIdTokenChanged(async user => {
+        auth.onIdTokenChanged(async user => {
             if (user) {
                 const token = await user.getIdToken();
                 // Store token in localStorage to share between domains
@@ -31,7 +34,7 @@ class SharedAuth {
 
     static async signIn(email, password) {
         try {
-            const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+            const userCredential = await auth.signInWithEmailAndPassword(email, password);
             const token = await userCredential.user.getIdToken();
             return { success: true, token };
         } catch (error) {
@@ -41,7 +44,7 @@ class SharedAuth {
 
     static async signOut() {
         try {
-            await firebase.auth().signOut();
+            await auth.signOut();
             localStorage.removeItem('authToken');
             return { success: true };
         } catch (error) {
@@ -49,3 +52,5 @@ class SharedAuth {
         }
     }
 }
+
+export { auth };
