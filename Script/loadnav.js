@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('../HTML/nav.html')
+    fetch('.nav.html')
         .then(response => response.text())
         .then(html => {
             document.querySelector('.nav-placeholder').innerHTML = html;
