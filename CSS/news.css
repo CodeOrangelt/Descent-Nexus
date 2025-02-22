@@ -35,10 +35,13 @@ html, body {
 
 .tab-content {
     display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .tab-content.active {
     display: block;
+    opacity: 1;
 }
 
 .hrcontainer {
@@ -171,30 +174,82 @@ hr {
 .content-nav {
     position: absolute;
     top: -32px;
-    left: 20px;
+    left: 0;
     display: flex;
-    gap: 20px;
+    gap: 0;
 }
 
 .content-nav-link {
     color: #ffffff;
     text-decoration: none;
+    padding: 8px 20px;
     font-size: 14px;
-    padding: 8px 16px;
-    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid #ffffff;
+    border-bottom: none;
     border-radius: 8px 8px 0 0;
-    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    margin-right: -1px;
 }
 
 .content-nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .content-nav-link.active {
     background-color: rgba(0, 0, 0, 0.5);
-    border: 2px solid #ffffff;
     border-bottom: none;
+    z-index: 1;
+    position: relative;
+}
+
+/* Version List Styles */
+.version-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.version-item {
+    border-left: 4px solid #ffffff;
+    padding-left: 15px;
+}
+
+/* Community Grid Styles */
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.community-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Staff Grid Styles */
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.staff-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.staff-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
 }
 
 /* Media Queries for Responsiveness */
