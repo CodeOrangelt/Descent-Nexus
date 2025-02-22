@@ -6,12 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <title>Descent Nexus</title>
     <link rel="shortcut icon" type="image/x-icon" href="cloak.ico">
+    <link href="../CSS/nav.css" rel="stylesheet" type="text/css">
     <link href="../CSS/news.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="hero-image"></div>
+    <div class="nav"></div>
     <div class="outer-container">
-        <!-- Content will be controlled by nav.js -->
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="switchTab('news')">News</button>
+            <button class="tab-button" onclick="switchTab('versions')">Versions</button>
+            <button class="tab-button" onclick="switchTab('community')">Community</button>
+            <button class="tab-button" onclick="switchTab('staff')">Staff</button>
+        </div>
         <div id="news" class="tab-content active">
             <h1 class="hero-title purple">Current Events</h1>
             <hr>

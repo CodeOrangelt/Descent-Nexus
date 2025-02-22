@@ -3,19 +3,17 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #1a1a1a;
     overflow-x: hidden;
 }
 
 .hero-image {
     position: fixed;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../Assets/1500x500.png");
     background-position: center;
     background-size: cover;
     z-index: -1;
-    min-height: 100vh;
     background-repeat: no-repeat;
     top: 0;
     left: 0;
@@ -24,16 +22,23 @@ html, body {
 .outer-container {
     width: 60%;
     max-width: 900px;
-    margin: 100px auto;
-    margin-left: 200px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border: 3px solid #ffffff;
-    border-radius: 15px;
+    margin: 50px auto;
+    margin-left: 300px;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% transparency */
+    border: 2px solid #ffffff;
+    border-radius: 0 15px 15px 15px; /* Adjusted to flat top-left for buttons */
     padding: 30px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     position: relative;
-    margin: 50px auto;
-    margin-left: 200px; /* Makes room for nav bar */
+    margin-top: 50px; /* Reduced top margin */
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }
 
 .hrcontainer {
@@ -74,23 +79,21 @@ html, body {
 .hrbutton:nth-child(4) { left: 75%; }
 
 .hero-title {
-    color: white;
-    font-size: 2em;
-    margin-bottom: 30px;
-    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
 }
 
 .hero-title.purple {
     color: #ffffff;
-    font-size: 2.5em;
+    font-size: 2em;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .news-item {
     background-color: rgba(0, 0, 0, 0.5);
     border-left: 4px solid #ffffff;
-    margin: 20px 0;
     padding: 20px;
+    margin: 20px 0;
     border-radius: 0 10px 10px 0;
     transition: transform 0.3s ease;
 }
@@ -125,15 +128,51 @@ html, body {
 }
 
 hr {
-    border-color: rgba(255, 255, 255, 0.3);
+    border: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
     margin: 20px 0;
+}
+
+.tab-buttons {
+    position: absolute;
+    display: flex;
+    gap: 10px;  /* Added space between buttons */
+    top: -32px;  /* Moved up slightly */
+    left: -1px;  /* Align with container border */
+}
+
+.tab-button {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ffffff;
+    border-bottom: none;
+    padding: 8px 20px;  /* Reduced vertical padding */
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;  /* Slightly smaller font */
+    border-radius: 8px 8px 0 0;
+    transition: all 0.3s ease;
+    position: relative;
+    bottom: -2px; /* Connect with container border */
+}
+
+.tab-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.tab-button.active {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border-bottom: 2px solid transparent; /* Makes it blend with container */
+    z-index: 1;  /* Ensure active tab appears above others */
 }
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
     .outer-container {
-        width: 90%;
-        margin: 60px auto;
+        width: 70%;
+        margin-left: 250px;
     }
     
     .hrbutton {
@@ -153,6 +192,8 @@ hr {
     }
     
     .outer-container {
-        margin-top: 200px;
+        width: 90%;
+        margin: 20px;
+        margin-left: 220px;
     }
 }
