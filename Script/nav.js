@@ -1,3 +1,6 @@
+// Add import at the top
+import { showAuthModal } from './auth.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     function getPathToRoot() {
         const path = window.location.pathname;
@@ -19,8 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <a href="${rootPath}HTML/news.html">News</a>
             <a href="${rootPath}HTML/projectd.html">Project D</a>
             <hr>
-            <a href="#" onclick="showAuthModal(); return false;">Login</a>
+            <a href="#" class="login-link">Login</a>
         `;
+
+        // Add event listener after creating the element
+        nav.querySelector('.login-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showAuthModal();
+        });
 
         return nav;
     }
