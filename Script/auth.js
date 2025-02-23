@@ -67,10 +67,25 @@ class SharedAuth {
 // Add function to set username
 async function setUserName(uid, pilotName) {
     try {
-        await setDoc(doc(db, 'nexus_users', uid), {
+        // Validate user is authenticated
+        if (!auth.currentUser) {
+            throw new Error('User must be authenticated to set pilot name');
+        }
+
+        // Validate current user matches the requested uid
+        if (auth.currentUser.uid !== uid) {
+            throw new Error('Unauthorized operation');
+        }
+
+        // Set the pilot name in Firestore
+        const userRef = doc(db, 'nexus_users', uid);
+        await setDoc(userRef, {
             pilotName: pilotName,
-            updatedAt: new Date().toISOString()
+            updatedAt: new Date().toISOString(),
+            uid: uid // Store uid for reference
         }, { merge: true });
+
+        // Update local storage
         localStorage.setItem('pilotName', pilotName);
         return true;
     } catch (error) {
@@ -82,13 +97,18 @@ async function setUserName(uid, pilotName) {
 // Add function to get username
 async function getUserName(uid) {
     try {
-        // First check localStorage
+        // Check authentication
+        if (!auth.currentUser) {
+            return 'Login';
+        }
+
+        // First check localStorage for performance
         const cachedName = localStorage.getItem('pilotName');
         if (cachedName) {
             return cachedName;
         }
 
-        // If not in localStorage, check Firestore
+        // Fetch from Firestore if not in cache
         const userDoc = await getDoc(doc(db, 'nexus_users', uid));
         if (userDoc.exists()) {
             const pilotName = userDoc.data().pilotName;
