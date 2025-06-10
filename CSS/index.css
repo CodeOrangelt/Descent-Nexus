@@ -189,3 +189,643 @@ font: tahoma;
     display: block;
 }
 
+/* News Modal Styles - Updated for better visibility */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent overlay */
+}
+
+.news-modal .modal-content {
+    background-color: #000000; /* Solid black background instead of transparent */
+    margin: 2% auto;
+    padding: 0;
+    border: 4px solid #ffffff;
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    opacity: 1; /* Ensure full opacity */
+}
+
+.news-modal-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #000000; /* Solid background */
+}
+
+.news-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.8); /* Add background for better visibility */
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.news-close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.news-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    background-color: #000000; /* Solid background */
+}
+
+.news-tabs {
+    display: flex;
+    background-color: #000000;
+    border-bottom: 2px solid #ffffff;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.tab-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: none;
+    padding: 12px 18px; /* Slightly smaller padding for 6 tabs */
+    cursor: pointer;
+    font-size: 14px; /* Slightly smaller font */
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    flex: 1; /* Equal width distribution */
+    min-width: 100px; /* Minimum width */
+}
+
+.tab-button:hover {
+    background-color: rgba(255, 255, 255, 0.4); /* More visible on hover */
+}
+
+.tab-button.active {
+    background-color: rgba(255, 255, 255, 0.5); /* More opaque when active */
+    color: #ffffff;
+}
+
+.tab-content {
+    display: none;
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    background-color: #5b5b5b9e; /* Solid black background */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background-size: cover;
+    background-position: center;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.section-header {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.news-item {
+    padding: 20px;
+    border-left: 4px solid #ffffff;
+    margin-bottom: 25px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 0 10px 10px 0;
+    transition: transform 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateX(10px);
+}
+
+.news-item h2 {
+    margin: 0 0 10px 0;
+    font-size: 22px;
+    color: #ffffff;
+}
+
+.news-meta {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 15px;
+}
+
+.news-content {
+    line-height: 1.6;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+/* Version List Styles */
+.version-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.version-item {
+    border-left: 4px solid #ffffff;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Container for image and buttons */
+.version-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Version Image Styles */
+.version-image {
+    width: 300px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.version-image:hover {
+    transform: scale(1.05);
+    border-color: #ffffff;
+}
+
+/* Version Buttons Styles */
+.version-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.version-btn {
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #ffffff;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    min-width: 200px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.version-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.version-btn .price {
+    font-size: 12px;
+    color: #00ff00;
+    font-weight: normal;
+}
+
+/* DXX-Redux Button Styling */
+.dxx-redux-btn {
+    background-color: rgba(0, 150, 255, 0.2) !important; /* Blue-ish background for distinction */
+    border-color: #0096ff !important;
+    color: #0096ff !important;
+}
+
+.dxx-redux-btn:hover {
+    background-color: rgba(0, 150, 255, 0.3) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* Piccu Engine Button Styling */
+.piccu-btn {
+    background-color: rgba(255, 165, 0, 0.2) !important; /* Orange background for distinction */
+    border-color: #ffa500 !important;
+    color: #ffa500 !important;
+}
+
+.piccu-btn:hover {
+    background-color: rgba(255, 165, 0, 0.3) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* Getting Started Button Styling */
+.getting-started-btn {
+    background-color: rgba(0, 255, 127, 0.2) !important; /* Green background for emphasis */
+    border-color: #00ff7f !important;
+    color: #00ff7f !important;
+}
+
+.getting-started-btn:hover {
+    background-color: rgba(0, 255, 127, 0.3) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) scale(1.02) !important; /* Slight emphasis on hover */
+}
+
+/* Steam Button Styling */
+.steam-btn {
+    background-color: rgba(23, 26, 33, 0.2) !important; /* Steam's dark blue-gray background */
+    border-color: #ffffff !important; /* White border */
+    color: #ffffff !important; /* White text */
+}
+
+.steam-btn:hover {
+    background-color: rgba(23, 26, 33, 0.3) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* GOG Button Styling */
+.gog-btn {
+    background-color: rgba(18, 18, 18, 0.2) !important; 
+    border-color: #ffffff !important; /* White border */
+    color: #ffffff !important; /* White text */
+}
+
+.gog-btn:hover {
+    background-color: rgba(18, 18, 18, 0.2) !important; 
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* Epic Games Store Button Styling */
+.epic-btn {
+    background-color: rgba(18, 18, 18, 0.2) !important; /* Epic's dark background */
+    border-color: #ffffff !important; /* White border */
+    color: #ffffff !important; /* White text */
+}
+
+.epic-btn:hover {
+    background-color: rgba(18, 18, 18, 0.3) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* GitHub Button Styling */
+.github-btn {
+    background-color: rgba(33, 31, 31, 0.2) !important; /* GitHub's dark background */
+    border-color: #211f1f !important;
+    color: #f0f6fc !important; /* GitHub's light text color */
+}
+
+.github-btn:hover {
+    background-color: rgba(33, 31, 31, 0.3) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* Community Section Styles */
+.community-section {
+    margin-bottom: 40px;
+}
+
+.community-category {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.community-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 120px;
+}
+
+.community-card:hover {
+    border-color: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+.community-card h3 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.community-card h3 a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.community-card h3 a:hover {
+    color: #00ff7f;
+}
+
+.community-card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Work logo styling for Vision section */
+.work-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+}
+
+/* Adjust spacing for cards with logos */
+.community-card:has(.work-logo) {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.community-card:has(.work-logo) h3 {
+    margin-top: 10px;
+}
+
+/* Special badges */
+.recommended-badge,
+.discontinued-badge,
+.frequency-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.recommended-badge {
+    background-color: rgba(0, 255, 127, 0.2);
+    color: #00ff7f;
+    border: 1px solid #00ff7f;
+}
+
+.discontinued-badge {
+    background-color: rgba(255, 0, 0, 0.2);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+}
+
+.frequency-badge {
+    background-color: rgba(0, 136, 204, 0.2);
+    color: #0088cc;
+    border: 1px solid #0088cc;
+}
+
+.community-card.recommended {
+    border-color: rgba(0, 255, 127, 0.5);
+}
+
+.community-card.discontinued {
+    border-color: rgba(255, 107, 107, 0.5);
+    opacity: 0.8;
+}
+
+/* Platform-specific badges */
+.platform-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.platform-badge.youtube {
+    background-color: rgba(255, 0, 0, 0.2);
+    color: #ff0000;
+    border: 1px solid #ff0000;
+}
+
+.platform-badge.twitch {
+    background-color: rgba(145, 70, 255, 0.2);
+    color: #9146ff;
+    border: 1px solid #9146ff;
+}
+
+/* Additional badges for content creators */
+.featured-badge {
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+    border: 1px solid #ffd700;
+}
+
+.specialty-badge {
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: rgba(0, 191, 255, 0.2);
+    color: #00bfff;
+    border: 1px solid #00bfff;
+}
+
+.content-type-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: rgba(128, 128, 128, 0.2);
+    color: #808080;
+    border: 1px solid #808080;
+}
+
+/* Special styling for featured content creators */
+.community-card.featured {
+    border-color: rgba(255, 215, 0, 0.5);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(255, 215, 0, 0.05));
+}
+
+.community-card.info-card {
+    border-color: rgba(128, 128, 128, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.community-card.info-card:hover {
+    border-color: #808080;
+}
+
+/* Adjust badge positioning when multiple badges are present */
+.community-card.featured .platform-badge {
+    top: 10px;
+    left: 10px;
+}
+
+.community-card.featured .featured-badge {
+    top: 10px;
+    right: 10px;
+}
+
+/* Staff grid styling (keeping existing) */
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.staff-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.staff-card:hover {
+    border-color: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+.staff-card h3 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.staff-card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Responsive adjustments for version buttons */
+@media (max-width: 768px) {
+    .version-btn {
+        min-width: 180px;
+        padding: 10px 16px;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .news-modal .modal-content {
+        width: 95%;
+        height: 95vh;
+        margin: 2.5% auto;
+    }
+    
+    .news-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-button {
+        flex: 1;
+        min-width: 100px;
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    
+    .tab-content {
+        padding: 20px;
+    }
+    
+    .community-grid,
+    .staff-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .version-image {
+        max-width: 250px;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .version-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .version-image {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .version-buttons {
+        align-items: center;
+        width: 100%;
+    }
+    
+    .version-btn {
+        min-width: 180px;
+        padding: 10px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-button {
+        flex: 1 1 100%; /* 1 tab per row on very small screens */
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .tab-button:last-child {
+        border-bottom: none;
+    }
+}
+

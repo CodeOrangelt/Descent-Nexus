@@ -37,9 +37,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         nav.innerHTML = `
             <h1 class="nav-title">Descent Nexus</h1>
             <hr>
-            <a href="${rootPath}index.html">Nexus</a>
             <a href="https://rdl.descentnexus.com" target="_blank">RDL</a>
-            <a href="${rootPath}HTML/news.html">News</a>
+            <a href="#" class="news-link">Hub</a>
             <a href="${rootPath}HTML/projectd.html">Project D</a>
             <hr>
             <div class="dropdown">
@@ -47,6 +46,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 ${dropdownContent}
             </div>
         `;
+
+        // Add event listener for news link
+        nav.querySelector('.news-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (window.showNewsModal) {
+                window.showNewsModal();
+            }
+        });
 
         if (user) {
             // Add event listener for changing name
@@ -59,7 +66,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         if (success) {
                             const loginLink = nav.querySelector('.login-link');
                             loginLink.textContent = newName.trim();
-                            // Don't reload, just update the text
                             localStorage.setItem('pilotName', newName.trim());
                         }
                     } catch (error) {

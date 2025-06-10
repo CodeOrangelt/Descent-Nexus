@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>See you in the mines!</title>
-    <!-- <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script> -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth.js"></script> -->
     <link href="cloak.ico" rel="shortcut icon" type="image/x-icon">
     <link href="./CSS/index.css" rel="stylesheet" type="text/css">
     <link href="./CSS/nav.css" rel="stylesheet" type="text/css">
     <link href="./CSS/auth-modal.css" rel="stylesheet" type="text/css">
     
-    <!-- Add type="module" to the auth.js script -->
     <script type="module" src="./Script/auth.js"></script>
 </head>
 <body>
@@ -20,10 +17,11 @@
             <h1>Gateway to all things Descent</h1>
         </div>
     </div>
-        <div class="nav"></div>
+    <div class="nav"></div>
     <div class="outer-container">
     </div>
 
+    <!-- Auth Modal -->
     <div id="authModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -37,9 +35,477 @@
         </div>
     </div>
 
+    <!-- News Modal -->
+    <div id="newsModal" class="modal news-modal">
+        <div class="modal-content news-modal-content">
+            <span class="close news-close">&times;</span>
+            <div class="news-container">
+                <div class="news-tabs">
+                    <button class="tab-button active" data-tab="news">News</button>
+                    <button class="tab-button" data-tab="versions">Buy Descent</button>
+                    <button class="tab-button" data-tab="community">Community</button>
+                    <button class="tab-button" data-tab="spread">Vision</button>
+                    <button class="tab-button" data-tab="content">Content</button>
+                    <button class="tab-button" data-tab="staff">Staff</button>
+                </div>
+
+                <div class="tab-content" id="spread">
+                    <h1 class="section-header">Project D - Our Vision</h1>
+                    
+                    <div class="community-section">
+                        <h2 class="community-category">Our Team</h2>
+                        <div class="community-grid">
+                            <div class="community-card">
+                                <h3>Code</h3>
+                                <p>It all started in 2016, I logged onto descent multiplayer only to realize the vast competitive world that I had yet to discover. In 2020 the DCL shut down putting competitive descent, and the active scene at an all time low. Me and B2af's vision is to reverse this, and keep the game alive!</p>
+                            </div>
+                            <div class="community-card">
+                                <h3>B2af</h3>
+                                <p>Co-founder and programming lead, working alongside Code to build the infrastructure and tools needed to revitalize the Descent community.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-section">
+                        <h2 class="community-category">How We're Contributing</h2>
+                        <div class="community-grid">
+                            <div class="community-card">
+                                <img src="./Assets/proxypodcast.png" alt="Proxy Podcast Logo" class="work-logo">
+                                <h3>Proxy Podcast</h3>
+                                <p>A podcast dedicated to immersing any listener to the community, and lesser known facts of the Descent franchise</p>
+                            </div>
+                            <div class="community-card">
+                                <img src="./Assets/youtube.png" alt="Youtube Content Logo" class="work-logo">
+                                <h3>YouTube Content</h3>
+                                <p>Long-term, instructional, demos, and shorts-based content all about Descent. Always looking for partners. You help us, we help you!</p>
+                            </div>
+                            <div class="community-card">
+                                <img src="./Assets/cloak.ico" alt="Descent Nexus Logo" class="work-logo">
+                                <h3>Descent Nexus</h3>
+                                <p>The hub for all things Descent, from ladders, to current news, versions, events, honors, and more!</p>
+                            </div>
+                            <div class="community-card">
+                                <img src="./Assets/image_2024-04-24_201752179.png" alt="RDL Logo" class="work-logo">
+                                <h3><a href="https://rdl.descentnexus.com/" target="_blank">RDL</a></h3>
+                                <p>The current Descent competitive ladder, bringing statistics, records, and lots of fun. We're leading the way!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-section">
+                        <h2 class="community-category">Our Mission</h2>
+                        <div class="community-grid">
+                            <div class="community-card">
+                                <h3>What is our goal?</h3>
+                                <p>Project D is the idea for community cooperation. It's an idea, a movement dedicated to prolonging and preserving the community. We want new innovations, new versions, new players, and new modern takes to the game. The idea is that if we can get enough people motivated to create content, drive, and buzz for the game we can bring this game back to its former glory! Project D doesn't seek admiration, or credit, it's simply the foundation for a movement from a group of like-minded gamers.</p>
+                            </div>
+                            <div class="community-card">
+                                <h3>How can you contribute?</h3>
+                                <p>That's a great question! Project D's aim is to house and boost content or innovations anyone from the descent community has. New map? We'll post it! Making D1 Videos? We'll push your channel! We want to be the hub for EVERYTHING descent, so if you love the game and want to do more, you have a home on our website!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-section">
+                        <h2 class="community-category">Community Movement</h2>
+                        <div class="community-grid">
+                            <div class="community-card">
+                                <h3>Preservation & Innovation</h3>
+                                <p>We're dedicated to preserving Descent's legacy while pushing for modern innovations and new takes on the classic gameplay.</p>
+                            </div>
+                            <div class="community-card">
+                                <h3>Content Creation Hub</h3>
+                                <p>Supporting creators with promotion, collaboration opportunities, and a platform to showcase their Descent-related work.</p>
+                            </div>
+                            <div class="community-card">
+                                <h3>Community Revival</h3>
+                                <p>Bringing back the competitive scene and active community that made Descent special, building on its former glory.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content active" id="news">
+                    <h1 class="section-header">Descent News</h1>
+                    <article class="news-item">
+                        <h2>Inferno Engine Beta</h2>
+                        <div class="news-meta">Posted on May 27, 2025 by Admin</div>
+                        <div class="news-content">
+                            A new take on descent remaking the entire lighting engine, AI, and integrating a BUILT-IN level editor. The Inferno Engine is a modern take on Descent, and is currently in beta. It is available for download on GitHub. https://github.com/nbayazes/Inferno/releases/tag/v0.3.2-beta
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <h2>RDL BETA Release</h2>
+                        <div class="news-meta">Posted on April 19th, 2025 by Admin</div>
+                        <div class="news-content">
+                            The RDL BETA is now available, play D1/D2/D3 Ladders, attend community events, and more! The RDL is the new home for competitive Descent, and we are excited to see you in the mines!
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <h2>D3 Source Code Release!</h2>
+                        <div class="news-meta">Posted on April 15, 2024 by Admin</div>
+                        <div class="news-content">
+                            Yup! That's right, Descent 3 source code has finally been released, the community is jumping to make changes, and working alongside the original maintainer of the code Kevin Bently...
+                        </div>
+                    </article>
+                </div>
+
+                <div class="tab-content" id="versions">
+                    <h1 class="section-header">Descent Versions</h1>
+                    <div class="version-list">
+                        <div class="version-item">
+                            <h3>Descent 3</h3>
+                            <p>The latest version with source code now available to the community. D3 is almost exclusively played on Piccu Engine entirely. You will have to purchase D3 and insert necessary game files in order to play the game. Your options are Either from Steam, GOG, or Epic.</p>
+                            <div class="version-content">
+                                <img src="./Assets/d3.jpg" alt="Descent 3" class="version-image">
+                                <div class="version-buttons">
+                                    <a href="https://github.com/InsanityBringer/PiccuEngine" target="_blank" class="version-btn piccu-btn">
+                                        <span>Piccu Engine</span>
+                                    </a>
+                                    <a href="https://store.steampowered.com/app/273590/Descent_3/" target="_blank" class="version-btn steam-btn">
+                                        <span>STEAM</span>
+                                        <span class="price">$20</span>
+                                    </a>
+                                    <a href="https://www.gog.com/game/descent_3_expansion" target="_blank" class="version-btn gog-btn">
+                                        <span>GOG</span>
+                                        <span class="price">$20</span>
+                                    </a>
+                                    <a href="https://github.com/DescentDevelopers/Descent3" target="_blank" class="version-btn github-btn">
+                                        <span>Original Source Code</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="version-item">
+                            <h3>Descent 2</h3>
+                            <p>The source code for D2 was released in 1999, download the original release below. For the most recent and RDL permitted EXE, dxx-redux.com will have the latest version see button below. You will have to purchase D2 on Steam, GOG, or Epic for the copyrighted data files.</p>
+                            <div class="version-content">
+                                <img src="./Assets/d2.jpg" alt="Descent 2" class="version-image">
+                                <div class="version-buttons">
+                                    <a href="https://www.reddit.com/r/descent/comments/146grks/descent_getting_started_guide/" target="_blank" class="version-btn getting-started-btn">
+                                        <span>How to Get Started</span>
+                                    </a>
+                                    <a href="https://www.dxx-redux.com" target="_blank" class="version-btn dxx-redux-btn">
+                                        <span>DXX-Redux</span>
+                                    </a>
+                                    <a href="https://store.steampowered.com/app/273580/Descent_2/" target="_blank" class="version-btn steam-btn">
+                                        <span>STEAM</span>
+                                        <span class="price">$20</span>
+                                    </a>
+                                    <a href="https://www.gog.com/game/descent_2" target="_blank" class="version-btn gog-btn">
+                                        <span>GOG</span>
+                                        <span class="price">$20</span>
+                                    </a>
+                                    <a href="https://store.epicgames.com/en-US/p/descent-ii-fe049e" target="_blank" class="version-btn epic-btn">
+                                        <span>EPIC</span>
+                                        <span class="price">$10</span>
+                                    </a>
+                                    <a href="https://github.com/videogamepreservation/descent2" target="_blank" class="version-btn github-btn">
+                                        <span>Original Source Code</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="version-item">
+                            <h3>Descent 1</h3>
+                            <p>The source code for D1 was released in 1998, download the original release below. For the most recent and RDL permitted EXE, dxx-redux.com will have the latest version see button below. You will have to purchase D1 on Steam, GOG, or Epic for the copyrighted data files.</p>
+                            <div class="version-content">
+                                <img src="./Assets/d1.jpg" alt="Descent 1" class="version-image">
+                                <div class="version-buttons">
+                                    <a href="https://www.reddit.com/r/descent/comments/146grks/descent_getting_started_guide/" target="_blank" class="version-btn getting-started-btn">
+                                        <span>How to Get Started</span>
+                                    </a>
+                                    <a href="https://www.dxx-redux.com" target="_blank" class="version-btn dxx-redux-btn">
+                                        <span>DXX-Redux</span>
+                                    </a>
+                                    <a href="https://store.steampowered.com/app/273570/Descent/" target="_blank" class="version-btn steam-btn">
+                                        <span>STEAM</span>
+                                        <span class="price">$20</span>
+                                    </a>
+                                    <a href="https://www.gog.com/game/descent" target="_blank" class="version-btn gog-btn">
+                                        <span>GOG</span>
+                                        <span class="price">$20</span>
+                                    </a>
+                                    <a href="https://store.epicgames.com/en-US/p/descent-62cef4" target="_blank" class="version-btn epic-btn">
+                                        <span>EPIC</span>
+                                        <span class="price">$10</span>
+                                    </a>
+                                    <a href="https://github.com/videogamepreservation/descent" target="_blank" class="version-btn github-btn">
+                                        <span>Original Source Code</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="community">
+                    <h1 class="section-header">Community Hub</h1>
+                    
+                    <div class="community-section">
+                        <h2 class="community-category">Map Archives & Libraries</h2>
+                        <div class="community-grid">
+                            <div class="community-card recommended">
+                                <h3><a href="https://sectorgame.com/dxma/" target="_blank">Sector Games DXMA</a></h3>
+                                <p>The ultimate map archive for Descent levels</p>
+                                <span class="recommended-badge">Recommended</span>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="http://pooterman.com/" target="_blank">Pooterman.com</a></h3>
+                                <p>Oldest Archive of timeless maps</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://kixor.net/dev/" target="_blank">Kixor 3D Viewer</a></h3>
+                                <p>Interactive 3D level viewer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-section">
+                        <h2 class="community-category">Level Editors & Mapping</h2>
+                        <div class="community-grid">
+                            <div class="community-card recommended">
+                                <h3><a href="https://github.com/nbayazes/Inferno/releases/tag/v1.0.27" target="_blank">Inferno Editor</a></h3>
+                                <p>Modern level editor with advanced features</p>
+                                <span class="recommended-badge">Recommended</span>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://descent2.de/dle-frames.html" target="_blank">Descent Level Editor</a></h3>
+                                <p>Classic editor used reliably for a long time.</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://github.com/arbruijn/sdldevil" target="_blank">SDL Devil</a></h3>
+                                <p>Oldest modern OS friendly editor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-section">
+                        <h2 class="community-category">Competitive Leagues</h2>
+                        <div class="community-grid">
+                            <div class="community-card recommended">
+                                <h3><a href="https://rdl.descentnexus.com/" target="_blank">Redux Descent League</a></h3>
+                                <p>Active competitive ladder(s) and events</p>
+                                <span class="recommended-badge">Recommended</span>
+                            </div>
+                            <div class="community-card discontinued">
+                                <h3><a href="http://descentchampions.org/" target="_blank">Descent Champions Legacy</a></h3>
+                                <p>Longest living competitive scene (archived)</p>
+                                <span class="discontinued-badge">Discontinued</span>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://discord.gg/6nkmxHt" target="_blank">The Observatory</a></h3>
+                                <p>40+ seasons and boasting the "tournament" spot for descent</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-section">
+                        <h2 class="community-category">Discord Servers</h2>
+                        <div class="community-grid">
+                            <div class="community-card recommended">
+                                <h3><a href="https://discord.gg/uyBAdn2PzB" target="_blank">RDL Discord</a></h3>
+                                <p>Main competitive community hub + New Maps</p>
+                                <span class="recommended-badge">Recommended</span>
+                            </div>
+                            <div class="community-card recommended">
+                                <h3><a href="https://discord.gg/6rEq2nkhFk" target="_blank">6Hang</a></h3>
+                                <p>Active multiplayer community</p>
+                                <span class="recommended-badge">Recommended</span>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://discord.gg/6nkmxHt" target="_blank">The Observatory</a></h3>
+                                <p>Active during current Observatory seasons</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://discord.gg/GCJNY8awdg" target="_blank">Descent Developers</a></h3>
+                                <p>Technical discussions and development</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://discord.gg/38xtyeQg9e" target="_blank">Descentforum.de</a></h3>
+                                <p>German Descent community</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://discord.gg/BzbuNNn5K5" target="_blank">6DOF Online</a></h3>
+                                <p>New Zealand/Australia community</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-section">
+                        <h2 class="community-category">Descent Forks & Mods</h2>
+                        <div class="community-grid">
+                            <div class="community-card recommended">
+                                <h3><a href="https://dxx-redux.com/" target="_blank">DXX-Redux</a></h3>
+                                <p>The current descent fork being widely used for multiplayer/singleplayer</p>
+                                <span class="recommended-badge">Recommended</span>
+                            </div>
+                            <div class="community-card recommended">
+                                <h3><a href="https://github.com/nbayazes/Inferno/releases/tag/v0.3.2-beta" target="_blank">Inferno Engine</a></h3>
+                                <p>Modern engine with advanced features</p>
+                                <span class="recommended-badge">Recommended</span>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://www.dxx-rebirth.com/" target="_blank">DXX-Rebirth</a></h3>
+                                <p>Oldest active source port</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://github.com/BredaUniversityGames/DXX-Raytracer" target="_blank">DXX-Raytracer</a></h3>
+                                <p>Overhauled lighting engine</p>
+                            </div>
+                            <div class="community-card discontinued">
+                                <h3><a href="https://github.com/CDarrow/DXX-Retro" target="_blank">DXX-Retro</a></h3>
+                                <p>Competitive-focused fork (archived)</p>
+                                <span class="discontinued-badge">Discontinued</span>
+                            </div>
+                            <div class="community-card discontinued">
+                                <h3><a href="https://github.com/arbruijn/d2x-xl" target="_blank">D2X-XL</a></h3>
+                                <p>C++ Blend of d1 & d2 with enhanced lighting and assets (archived)</p>
+                                <span class="discontinued-badge">Discontinued</span>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://github.com/CodeOrangelt/D1X-SNG" target="_blank">DXX-SNG</a></h3>
+                                <p>Enhanced mods and game modes</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-section">
+                        <h2 class="community-category">Source Codes</h2>
+                        <div class="community-grid">
+                            <div class="community-card">
+                                <h3><a href="https://github.com/videogamepreservation/descent" target="_blank">Descent 1 Source</a></h3>
+                                <p>Original D1 source code release</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://github.com/videogamepreservation/descent2" target="_blank">Descent 2 Source</a></h3>
+                                <p>Original D2 source code release</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://github.com/DescentDevelopers/Descent3" target="_blank">Descent 3 Source</a></h3>
+                                <p>Original D3 source code release</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-section">
+                        <h2 class="community-category">Community Events</h2>
+                        <div class="community-grid">
+                            <div class="community-card">
+                                <h3><a href="https://discord.gg/6nkmxHt" target="_blank">The Observatory</a></h3>
+                                <p>Quarterly community events</p>
+                                <span class="frequency-badge">Quarterly</span>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://rdl.descentnexus.com/articles.html" target="_blank">RDL Mapping Competition</a></h3>
+                                <p>Semi-annual mapping contests</p>
+                                <span class="frequency-badge">Semi-Annual</span>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://www.when2meet.com/?30254163-cKAWH" target="_blank">D3 Teams Smash Party</a></h3>
+                                <p>Weekly D3 team matches</p>
+                                <span class="frequency-badge">Weekly</span>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://discord.gg/mQrS6ECNyB" target="_blank">DOSBox Deathmatch Club</a></h3>
+                                <p>Retro Descent events</p>
+                                <span class="frequency-badge">Quarterly</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-section">
+                        <h2 class="community-category">Social Media</h2>
+                        <div class="community-grid">
+                            <div class="community-card">
+                                <h3><a href="https://www.reddit.com/r/descent/" target="_blank">r/Descent</a></h3>
+                                <p>Reddit community for discussions</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://www.facebook.com/groups/167637026623243" target="_blank">Descent Rangers</a></h3>
+                                <p>Facebook community group</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://www.facebook.com/groups/descent/" target="_blank">Descent Fans</a></h3>
+                                <p>General Facebook fan group</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://www.facebook.com/groups/descentpilots/" target="_blank">Descent Pilots</a></h3>
+                                <p>Pilot community on Facebook</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://www.facebook.com/groups/276691325829808/" target="_blank">Descent 3 =D3=</a></h3>
+                                <p>D3-focused Facebook group</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="staff">
+                    <h1 class="section-header">Our Staff</h1>
+                    <div class="staff-grid">
+                        <div class="staff-card">
+                            <h3>Code</h3>
+                            <p>Founder - Website Designer, Programming, Social Outreach, Council</p>
+                        </div>
+                        <div class="staff-card">
+                            <h3>B2af</h3>
+                            <p>Founder - Programming, Council</p>
+                        </div>
+                        <div class="staff-card">
+                            <h3>Blarget</h3>
+                            <p>Creative Lead - RDL Council and Creative lead</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="content">
+                    <h1 class="section-header">Content Creators</h1>
+                    
+                    <div class="community-section">
+                        <h2 class="community-category">YouTube Channels</h2>
+                        <div class="community-grid">
+                            <div class="community-card">
+                                <h3><a href="https://www.youtube.com/@tunnelboss" target="_blank">Lee (Tunnel Boss)</a></h3>
+                                <p>A descent veteran and community-acclaimed docent. Lee has a library of extremely well documented Descent Demo's ranging from hundreds of episodes featuring different ways to play Descent.</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://www.youtube.com/@Code_6dof" target="_blank">Code (6DOF)</a></h3>
+                                <p>Focused on competitive replays and descent tutorials both simple and advanced. Code's entire YouTube presence is dedicated to Descent content.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-section">
+                        <h2 class="community-category">Twitch Streamers</h2>
+                        <div class="community-grid">
+                            <div class="community-card featured">
+                                <h3><a href="https://twitch.tv/roncli" target="_blank">Roncli</a></h3>
+                                <p>Being one of the core pillars of Descent, Roncli has been pumping out descent related content more than anyone else for the past decade. Host of The Observatory, and host of discontinued "SDS Podcast" focused on competitive analysis.</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://twitch.tv/blarget2" target="_blank">Blarget2</a></h3>
+                                <p>Leading the way in innovative descent mapping. Blarget's maps stand tall as the most innovative and creative maps, and for the public's entertainment, streams it for all to see.</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://twitch.tv/uf_jediluke" target="_blank">Jediluke</a></h3>
+                                <p>Jedi being among the most competitively accomplished pilots, streams often his POV for all to see.</p>
+                            </div>
+                            <div class="community-card">
+                                <h3><a href="https://twitch.tv/b2af" target="_blank">B2af</a></h3>
+                                <p>As one of the highest ranked Gold pilots (legacy DCL), B2af shows his POV on his Twitch channel showing his unique skills using an Xbox Controller on a 30+ year old game.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script type="module" src="./Script/auth.js"></script>
     <script type="module" src="./Script/auth-modal.js"></script>
     <script type="module" src="./Script/nav.js"></script>
+    <script src="./Script/news-modal.js"></script>
 </body>
 </html>
